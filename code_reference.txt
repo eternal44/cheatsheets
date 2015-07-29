@@ -1,0 +1,340 @@
+    
+
+****************
+* Git commands *
+****************
+
+# Work flow models:
+  Fork & Pull Model
+    For the origin
+    make a branch
+    add commits
+    then pull to review code w/ the code reviewer
+    if my changes are approved i can deploy my branch in production
+    if everything works in production in can merge it with master
+  Shared Repository Model
+
+
+
+# granular commit 
+git add . -N && git add -p
+
+git help
+https://help.github.com/articles/
+
+git co -b <branch name>
+
+git commit -a -m 'added new benchmarks'
+
+* Push existing repository from command line
+git remote add origin git@bitbucket.org:<username>/sample_app.git
+git remote add origin https://github.com/user/repo.git
+
+git push -u origin --all 
+
+git log --pretty=format:"%h - %an, %ar : %s"
+
+git log --pretty=format:"%h %s" --graph
+
+git reset [commit]
+enter commit number to undo all commits after it
+
+git reset --hard HEAD
+discard all changes and get clean working tree
+
+git clean -df
+removes all unstaged files & directories
+
+git lg -n 3
+get git log for last 3 commits
+
+git revert <commit>
+Generate a new commit that undoes all of the changes introduced in <commit>, then apply it to the current branch.
+
+git commit --amend
+Combine the staged changes with the previous commit and replace the previous commit with the resulting snapshot. Running this when there is nothing staged lets you edit the previous commit’s message without altering its snapshot.
+
+git revert --no-commit b28d438..HEAD
+git commit -m "Reverted back to b28d438"
+if you really mess up with commits do this to undo :)
+
+git checkout -b new-working-branch
+git add …
+git commit -m "mycommit" 
+How to move the changes into a new branch new-working-branch and then discard working-branch
+
+
+****************
+* Git / Heroku *
+****************
+
+heroku create
+
+git push heroku master
+
+heroku logs
+
+$ heroku run console --sandbox
+
+$ git push -u origin feature_branch_name`
+push and track a specific branch
+
+
+git push  
+git push heroku master
+git push heroku
+/* when you're on master */
+heroku pg:reset DATABASE
+heroku run rake db:migrate
+heroku run rake db:seed
+
+# if the css or styling doesn't match with the local host:
+bundle exec rake assets:precompile
+
+
+******************************
+* Push commit to remote repo *
+******************************
+
+$ git commit -m "Add a Static Pages controller"
+$ git push -u origin static-pages
+The final command here arranges to push the static-pages topic branch up to Bitbucket. Subsequent pushes can omit the other arguments and write simply
+
+$ git push
+
+
+
+***************************
+* Undo scaffold/ generate *
+***************************
+
+$ rails generate controller StaticPages home help
+$ rails destroy  controller StaticPages home help
+
+Similarly, in Chapter 6 we’ll generate a model as follows:
+$ rails generate model User name:string email:string
+
+This can be undone using:
+$ rails destroy model User
+
+rails g erb:scaffold Book
+This will return:
+
+create  app/views/books
+create  app/views/books/index.html.erb
+create  app/views/books/edit.html.erb
+create  app/views/books/show.html.erb
+create  app/views/books/new.html.erb
+create  app/views/books/_form.html.erb
+
+
+
+*******************
+* Undo migration  *
+*******************
+
+$ bundle exec rake db:migrate
+
+We can undo a single migration step using
+$ bundle exec rake db:rollback
+
+Roll back specific version
+rake db:migrate:down VERSION=20100905201547
+
+Migrate Status
+rake db:migrate:status
+
+
+
+
+**********************
+*	Android Studio	 *
+**********************
+
+cd android-studio/bin
+
+./studio.sh
+
+
+
+
+
+***********
+* Testing *
+***********
+
+write failing tests first.  then write pass tests.
+
+write controller and model tests first and integration tests (which test functionality across models, views, and controllers) second
+
+bundle exec rake test
+
+5.3.4 - link testing
+
+debugger
+add to code where you want to search params, etc.
+
+
+********************************
+* Automated testing with Guard *
+********************************
+
+https://www.railstutorial.org/book/static_pages
+3.7.3
+
+bundle exec guard
+to start
+
+*********
+* Rails *
+*********
+
+Configure pgres db
+rails new myapp --database=postgresql
+
+annotate gem - need to instanti
+*******
+* DB & models *
+*******
+
+$ bundle exec rake db:migrate
+
+$ bundle exec rake db:rollback
+
+$ rails console --sandbox
+#all changes wil be rolled back on exit
+
+$ bundle exec rake test:models
+
+User.create
+combines User.new and User.save
+
+user.update_attributes(name: "xx", email: "xx")
+changes and saves attribute.
+use ...attribute(name:... for single changes
+
+
+
+    This:
+    class User < ActiveRecord::Base
+    validates :name, presence: true
+    end
+
+    is the same as this:
+    class User < ActiveRecord::Base
+    validates(:name, presence: true)
+    end
+
+    $ bundle exec rake db:migrate:reset
+    clears out all db data
+
+
+
+    ***************
+    * Definitions *
+***************
+
+Authentication - ID's users
+Authorization - allows actions
+
+
+Routes
+
+_url vs _path
+use "_url" for redirect
+this is like http://mydomain.com
+
+use "_path" for hyperlinks
+this is like /
+
+
+**********
+* S3 AWS *
+**********
+
+1) Sign in to the AWS Management Console at http://aws.amazon.com/iam/
+
+2) Click "Policies" from the Navigation Pane on the left
+
+3) Select the "AdministratorAccess" policy
+
+4) Click Policy Actions > Attach at the top of the page
+
+5) Select the user associated with my S3_ACCESS_KEY, S3_SECRET_KEY, and S3_BUCKET
+
+6) Click "Attach Policy"
+
+
+References:
+squat_admin
+Access Key ID:
+Secret Access Key:
+
+**************
+* POSTGRESQL *
+* ************
+
+http://linuxrails.blogspot.com/2012/06/postgresql-setup-for-rails-development.html
+
+
+psql [table name]
+opens console
+
+
+hba_file path # for configuring connections
+/etc/postgresql/9.1/main/pg_hba.conf
+
+
+sudo /etc/init.d/postgresql restart
+to restart db
+
+rake db:create:all 
+creates new db's
+
+rake db:migrate
+
+pgadmin3
+opens db viewer?
+
+alter user username with password ‘new password’;
+update password
+
+drop database projectname;
+
+
+Connect to specific database
+\c databasename
+
+Common MySQL commands with postgresql shortcut
+
+SHOW DATABASES  
+\l
+
+SHOW TABLES 
+\d
+
+SHOW COLUMNS  
+\d table
+
+
+  rake db:setup
+sets db to your settings (in database.yml?)
+
+
+  lift PG admin info:
+
+  user:  jyoun
+  password:  gooneen44
+  table names:
+  lift_developement
+  lift_test
+
+  *************
+  * BOOTSTRAP *
+  *************
+
+  https://github.com/IronSummitMedia/startbootstrap-one-page-wonder
+
+templates:
+http://startbootstrap.com/template-categories/all/
+

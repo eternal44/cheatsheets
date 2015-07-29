@@ -1,0 +1,100 @@
+
+
+**********
+* CODING *
+**********
+
+get a job program?
+chelseab@premiersearchsv.com
+
+set up blog!
+
+  write another post!
+
+  create user_profile table to inherit from user
+    add: role - default to regular
+        
+    add profile as inheritance:
+      firstname
+      lastname
+      profile pic (avatar?)
+
+  topic ideas:
+    how i'm developing as a coder
+      consider base line - system knowledge
+      efficiency
+        refactoring
+        DRY
+        design patterns
+        use associations vs inheritance?
+        polymorphic vs STI?
+
+  put together snippets
+  due by:  Tuesday
+  add admin for devise
+    https://github.com/plataformatec/devise
+  only show first 5 lines of blog
+  paginate
+
+Get from upcase
+  link dotfile and add to github
+  comb through the rest of videos to get what I need
+
+john github collab
+ask Kee Lee for help getting job?
+  get lunch with him
+  tell him I took his advice and am looking deeper into moving to silicon beach
+
+take down posted secret keys from github
+
+clean up vim cheet sheets
+
+code kata
+
+
+*************************
+*	Personal			*
+*************************
+
+Living trust - check if I have to pay taxes
+
+Oakland house hunt
+  lunch with edward on tuesday
+
+  Shop around
+    Lake Merritt - north side good. Others are okay
+    Adams point
+    Piedmont
+    West Oakland - ghetto but pockets of cool spots
+
+    East Oakland ghetto
+    Jack London
+    Downtown Oakland is hit or miss
+
+
+umma appa house hunt
+http://www.city-data.com/forum/atlanta/1508-looking-korean-communities-near-atlanta-2.html
+
+do h6? for for insurance
+once draw check clears get umma & appa presents
+
+What is a little known truth that everyone needs to know?  - peter thiel
+
+	base a business around this
+
+
+
+Health insurance for more people
+	create a non-profit/ club?
+
+
+Create Idea bank
+	fight counterfeits
+		food
+		meds
+			as a starting point:  consider what nutrients would be easiest and most common to test 
+
+			consider what mediums to communicate these thru
+				video?  document?  blog?
+		drinks
+		all of the above?

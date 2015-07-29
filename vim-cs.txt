@@ -1,0 +1,184 @@
+:help w
+  pulls help for "w" u
+
+******************
+* LINK DOT FILES *
+******************
+
+Ex: ln -s ~/code/dotfiles/vimrc ~/.vimrc
+
+
+*************
+* SURROUND  *
+*************
+
+ds<character>			Delete surrounding <character>
+cs<character><new character>	Replace surrounding <character> with <new character>
+ys<text-obj><character>		Surround text-object with <character>
+dst				Delete surround tag (works on HTML tags)
+cst<h3>				Change surrounding tag to <h3>
+
+
+% = finds opposing brackets or matching key words
+  ex:  (),[], def - end, etc
+
+*************
+* RAILS VIM *
+*************
+
+:A			Open the "alternate" file of the current (spec for model, etc)
+:AV			Open the "alternate" file in a vertical split
+:RModel <tab>		Tab complete to open models by name
+:RController <tab>	Tab complete to open models by name
+:Rextract (visual)	Extract visual selection to a partial, replace with render
+:E[file type]		If you're in the user model and want to edit it's related file type.  EX: unittest
+gf			jumps to partial
+
+
+
+***************
+* TMUX RUNNER *
+***************
+
+<leader>ap = attach to a pane
+<leader>cp = send a line or selected to pane
+
+
+
+
+*************
+* FILE NAV  *
+*************
+
+	<C-w>T	Break the current window out to a new tab
+
+***************
+* KEY MAPPING *
+***************
+<leader>	Will be replaced with your leader key, e.g. \ or space
+<esc>	Treated as pressing the escape key
+<cr>	Treated as pressing the return key
+<C-k>	Control and k (k can be any character here)
+K	Upercase k. Note no need to specify shift key
+<F6>	Function key 6. (Similar for all fn keys)
+
+
+******************
+* VIM QUICK TIPS *
+******************
+
+<leader>i = auto indents whole screen
+
+<leader>p = smart pasting # might not work
+
+
+* TABS
+
+2gt = navigate to 2nd tab
+
+:tabm 1 = moves current tab right after 1st tab
+
+***********************
+* NAVIGATING IN RAILS *
+***********************
+
+]m, [m = jump to top or def
+[M = jump to end of next definition
+
+**********
+* SEARCH *
+**********
+
+CTRL-O = takes you back to older positions
+CTRL-I = takes you to new ones
+
+Search & replace
+  :s/old/new/g = changes all "old" to "new" in that line
+  
+  :#,#s/old/new/g = "#,#' defines line ranges to find and replace text
+  
+  :%s/old/new/gc = find every occurence in the whole file with prompt
+
+
+********
+* EDIT *
+********
+
+R = replace continuously
+
+di( = deletes everything within paranthesis
+
+**********
+* COMBOS *
+**********
+
+Add a command at the beginning of any of these:
+	w, aw	"inner word", "a word" (a word includes the space)
+	ip, ap	"inner paragraph", "a paragraph" ("a" includes the newline)
+	i), a)	"inner parenthesis", "a parenthesis" (includes the parens)
+	i', a'	"inner single quote", "a single quote" (includes the quotes)
+	i", a"	"inner double quote", "a double quote" (includes the quotes)
+	it, at	"inner tag", "a tag" (includes the open and closing tag)>
+
+	examples:
+	dw = delete to beginning of next word
+	daw = deletes the word no matter where the cursor is
+	ciw = delets just the word and puts you into insert
+	cip = deletes the paragraph and puts you into insert
+	dip = delete paragraph
+		in this situation:
+			i = inter (as in inside an object)
+			p = paragraph
+
+	/[word], ciw, n, . = find [word], delete a word and insert new word, go to next,  repeate with "."
+
+>ip = indents whole paragraph>
+
+
+*******************
+*******************
+	TMUX
+
+*******************
+*******************
+
+# tips
+only one tmux client in terminal
+only one project per session.
+  details:  1st window - vim & tests
+            2nd window - background processes
+only run one vim instance per session
+
+# start new session
+tmux new-session -s [session name]
+
+# connect to new session
+tmux switch-client -t [session name]
+
+# switch sessions
+prefix L
+ 
+# list sessions
+tmux list-sessions
+
+# detach session
+prefix d
+
+# key binding
+tmux bind-key [key] [command]
+  ex: tmuxh bind-key u split-window
+    use prefix before the keys
+
+# if vim takes up whole window and you need to do tmux commands
+prefix :
+
+# break a current pane into a new window
+prefix b
+
+# move windows around
+C-a {          move the current pane to the previous position
+C-a }          move the current pane to the next position
+C-a C-o        rotate window ‘up’ (i.e. move all panes)
+C-a M-o        rotate window ‘down’
+
+
