@@ -64,6 +64,19 @@ git commit -m "mycommit"
 How to move the changes into a new branch new-working-branch and then discard working-branch
 
 
+**************
+* DEF'N *
+**************
+class
+  ex:  float, string
+
+object
+  ex:
+    string object: "hello"
+
+method - things you can do with an object
+  ex:
+    object method: "1".to_i
 ****************
 * Git / Heroku *
 ****************
@@ -162,6 +175,13 @@ cd android-studio/bin
 ***********
 * Testing *
 ***********
+see for reference
+  http://guides.rubyonrails.org/testing.html#unit-testing-your-models
+  home/james/lab/practice/test_practice/
+    integration
+    controller
+    model
+    routes
 
 write failing tests first.  then write pass tests.
 

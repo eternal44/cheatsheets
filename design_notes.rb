@@ -46,18 +46,6 @@ names.select do |name|
   name.start_with?("S")
 end.map { |name| name.upcase }
 
-# Use ||= freely to initialize variables.
-
-# set name to Bozhidar, only if it's nil or false
-name ||= "Bozhidar"
-
-# Don't use ||= to initialize boolean variables. (Consider what would happen if the current value happened to be false.)
-
-# bad - would set enabled to true even if it was false
-enabled ||= true
-
-# good
-enabled = true if enabled.nil?
 ************************
 * WORK FLOW FOR COMPLEX*
 ************************

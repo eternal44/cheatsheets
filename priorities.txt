@@ -1,14 +1,62 @@
 
-
 **********
 * CODING *
 **********
 
+gity
+  test written for:
+    Unit Tests:
+      friendship_test.rb
+      archive_test.rb
+
+    Functional Tests:
+
+    Integration Tests:
+  for group - change to dashboard model and controller and move groups, archives, here
+
+write blog
+  
+  check testing:
+    http://thiagoa.github.io/some-notes-on-testing-and-pundit-testing/
+    remove "shared" links
+    write tests after
+
+
+continue learning and building
+interviews are technical
+  different from big cos and startups
+  startups
+    want jr devs to hit the floor running
+
+  bigger cos
+    can train new devs
+    maybe start as QA
+
+  co's like sales exp
+    to relate to clients
+
+  just apply to all the jobs
+
+  maybe not best to start with recruiter
+    they might rank me low and it'll get passed on to HR dept's in other companies
+
+  read up on interview questions
+
 get a job program?
 chelseab@premiersearchsv.com
+find mentor to refactor code with
 
-set up blog!
+Reading:
+  https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows
+  OO Solid design principles - Sandi Metz
+  Rogue Ruby - design patterns - Sandi Metz
 
+OO Design
+  if your tests are too hard to write somethings wrong with your design
+  learn OO design and then TDD
+
+Blog ideas
+  writing / style guides
   write another post!
 
   create user_profile table to inherit from user

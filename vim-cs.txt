@@ -1,11 +1,19 @@
-:help w
-  pulls help for "w" u
 
 ******************
 * LINK DOT FILES *
 ******************
 
 Ex: ln -s ~/code/dotfiles/vimrc ~/.vimrc
+
+
+*************
+* SYSTEM    *
+*************
+acpi -t 
+  see how hot the computer is.  anything below 70 is ok
+
+top
+  task manager
 
 
 *************
@@ -35,22 +43,11 @@ cst<h3>				Change surrounding tag to <h3>
 gf			jumps to partial
 
 
-
-***************
-* TMUX RUNNER *
-***************
-
-<leader>ap = attach to a pane
-<leader>cp = send a line or selected to pane
-
-
-
-
 *************
 * FILE NAV  *
 *************
 
-	<C-w>T	Break the current window out to a new tab
+	<leader>t	Break the current window out to a new tab
 
 ***************
 * KEY MAPPING *
@@ -68,8 +65,6 @@ K	Upercase k. Note no need to specify shift key
 ******************
 
 <leader>i = auto indents whole screen
-
-<leader>p = smart pasting # might not work
 
 
 * TABS
@@ -99,12 +94,23 @@ Search & replace
   
   :%s/old/new/gc = find every occurence in the whole file with prompt
 
+*************
+* CONTROL P *
+*************
+
+* Press <c-f> and <c-b> to cycle between modes.
+* Press <c-d> to switch to filename only search instead of full path.
+* Press <c-r> to switch to regexp mode.
+* Use <c-j>, <c-k> or the arrow keys to navigate the result list.
+* Use <c-t> or <c-v>, <c-x> to open the selected entry in a new tab or in a new split.
+* Use <c-n>, <c-p> to select the next/previous string in the prompt's history.
+* Use <c-y> to create a new file and its parent directories.
+* Use <c-z> to mark/unmark multiple files and <c-o> to open them.
+
 
 ********
 * EDIT *
 ********
-
-R = replace continuously
 
 di( = deletes everything within paranthesis
 
@@ -149,17 +155,23 @@ only one project per session.
             2nd window - background processes
 only run one vim instance per session
 
-# start new session
-tmux new-session -s [session name]
+C-a (          previous session
+C-a )          next session
+C-a L          ‘last’ (previously used) session
+C-a s          choose a session from a list
+Other:
+
+C-a $          rename the current session
 
 # connect to new session
 tmux switch-client -t [session name]
 
-# switch sessions
-prefix L
- 
 # list sessions
-tmux list-sessions
+tmux ls
+
+# attach session
+tmux a
+tmux a -t [session-name]
 
 # detach session
 prefix d
@@ -168,9 +180,6 @@ prefix d
 tmux bind-key [key] [command]
   ex: tmuxh bind-key u split-window
     use prefix before the keys
-
-# if vim takes up whole window and you need to do tmux commands
-prefix :
 
 # break a current pane into a new window
 prefix b
