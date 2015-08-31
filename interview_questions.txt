@@ -1,0 +1,169 @@
+********************
+* CODE INTERVIEW   *
+********************
+
+What is MVC?
+  Framerwork to tie together the following
+  model:  ORM 
+  controller:  back end
+  view:  front end
+
+What is CRUD?
+  4 basic functions of persistent storage
+  create
+  read
+  update
+  destroy
+
+What is ORM?
+  design pattern to access db
+  ex:  active record
+
+Why is a hash look up so much faster?
+  stores elements in bins (array of arrays)
+
+What is a ruby symbol and when do you use it?
+  most basic object you can create - it's just a name and an internal ID.
+  ? - symbols are useful because a given symbol name refers to the same object
+  throughout a ruby program vs a string.
+
+  use symbol when the identity of object is important
+  use string when the contents (sequence of characters) is important
+
+What is a gem?
+  a ruby library
+
+Ruby allows for single inheritance only.  The super class for all ruby classes
+is "class"
+
+What is an object?  In Ruby, is a String an object?
+Everything in ruby is an object.  Yes, a string is an object as well - look
+at how we can use methods like "split", "slice", "upcase" on it.
+
+What is object oriented programming (OOP)
+  Objects - instance of a class
+
+  Classes - blueprint for making objects
+
+  * allows you to relate to your data thru abstractions
+
+Ruby is a dynamically typed language (vs statically typed)
+  you can reassign a varialbe to different values at any time
+    except when you freeze I guess
+
+HAML - HTML Abstraction Markup Language
+  template engine like erb
+
+What is the Rails asset pipeline, and how does it attempt to improve page performance?
+
+What is caching?
+
+What is a Presenter?
+
+Which testing frameworks are you familiar with? What is the difference between an integration test and a unit test?
+
+What is ActiveSupport?
+
+What is the difference between a Module and a Class?
+
+What is the difference between false and falsey in Ruby?
+
+********************
+Write a function that capitalizes every third alphanumeric character in the following string:
+
+Larubymeetup.com
+so that your output looks like
+
+laRubYmeEtuP.coM
+Notice that, when counting every third character, we ignore the period, but we do include the period in the output.
+
+2. The Fibonacci sequence is a sequence of integers that begins with 0, 1. Each subsequent integer is calculated by adding the two integers to the left of it. So the next number in the sequence is 1, because 0 + 1 == 1. The number after that is 2, because 1 + 1 == 2. So, the first several entries in the Fibonacci Sequence are:
+
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34 …
+
+Write a function that calculates the first 100 numbers in the Fibonacci sequence
+
+3. Write a program that prints out integers 1-100. If a number is divisible by 3, print the number, followed by a space, followed by “fizz”. If a number is divisible by 5, print the number, followed by a space, followed by “buzz”. If the number is divisible by both 3 and 5, print the number, followed by a space, followed by “fizzbuzz”.
+
+4. Write a program that reverses the string “programming” (not simply “programming’.reverse) :)
+
+5. Given a matrix of integers I draw you on the whiteboard, and one of those integers I choose, as a starting point, write a program that spirals outward counterclockwise, printing the position and value of each integer. When your spiral reaches any edge of the matrix, stop the program.
+
+6. You have a pile of two quarters, and the quarters are identical. With these two quarters, you can make two different kinds of piles; one pile of two, and two piles of one, for a total of two unique partitions.
+
+How many unique partitions can you make with four quarters? Try to write a function that calculates the number of unique partitions for four quarters, and for n quarters.
+
+
+********************
+CODE INTERVIEW   *
+********************
+
+What is MVC?
+  Framerwork to tie together the following
+  model:  ORM 
+  controller:  back end
+  view:  front end
+
+What is CRUD?
+  4 basic functions of persistent storage
+  create
+  read
+  update
+  destroy
+
+What is ORM?
+  design pattern to access db
+  ex:  active record
+
+Why is a hash look up so much faster?
+  stores elements in bins (array of arrays)
+
+What is a ruby symbol and when do you use it?
+  most basic object you can create - it's just a name and an internal ID.
+  ? - symbols are useful because a given symbol name refers to the same object
+  throughout a ruby program vs a string.
+
+  use symbol when the identity of object is important
+  use string when the contents (sequence of characters) is important
+
+What is a gem?
+  a ruby library
+
+Ruby allows for single inheritance only.  The super class for all ruby classes
+is "class"
+
+What is an object?  In Ruby, is a String an object?
+Everything in ruby is an object.  Yes, a string is an object as well - look
+at how we can use methods like "split", "slice", "upcase" on it.
+
+What is object oriented programming (OOP)
+  Objects - instance of a class
+
+  Classes - blueprint for making objects
+
+  * allows you to relate to your data thru abstractions
+
+Ruby is a dynamically typed language (vs statically typed)
+  you can reassign a varialbe to different values at any time
+    except when you freeze I guess
+
+HAML - HTML Abstraction Markup Language
+  template engine like erb
+
+What is the Rails asset pipeline, and how does it attempt to improve page performance?
+
+What is caching?
+
+What is a Presenter?
+
+Which testing frameworks are you familiar with? What is the difference between an integration test and a unit test?
+
+What is ActiveSupport?
+
+What is the difference between a Module and a Class?
+
+What is the difference between false and falsey in Ruby?
+
+
+
+

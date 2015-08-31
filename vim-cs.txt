@@ -1,34 +1,196 @@
 
 ******************
+* PHILOSOPHY     *
+******************
+"It is confusing to me to even think about methods returning objects unless you are using that as a very specific shorthand for saying that methods return *references* to objects. That is the unifying idea that helped me understand how Ruby manipulates data -- it is all references and not the objects themselves. The objects themselves are almost completely hidden from the programmer (excluding C extensions) in Ruby. Everything is a reference to an object."
+
+******************
 * LINK DOT FILES *
 ******************
 
 Ex: ln -s ~/code/dotfiles/vimrc ~/.vimrc
 
+*************
+* ruby code *
+*************
+@variable ||= "default value"
+  same thing as:
+    @variable = @variable || "default value"
 
+  sets a value only if it hasn't already been set
+
+
+if a = f(x) and b = f(y) and c = f(z) then d = g(a,b,c) end  
+  * values will keep getting set until it reaches a false value
+  * this wouldn't be possible if I used '&&' instead of 'and'
+
+
+puts `ls`
+  * enters this into terminal where my program is
+
+system("tar xzf test.tgz)
+  * same as above but using kernel's system method
+
+***************
+* ASSIGNMENTS *
+***************
+x,y = y,x
+  will exchange values
+
+*************
+* BANGS     *
+*************
+
+a = "hello"
+a.upcase
+=> "HELLO"
+a
+=>"hello"
+a.upcase!    <-- where the magic happens
+=> "HELLO"
+a
+=> "HELLO"
+
+
+
+
+*************
+* ARRAY     *
+*************
+
+
+class & modules are constants so they start with an upper case letter
+
+
+****************
+* METHOD       * - for local variables just set to new name or symbol
+****************
+
+* alias will retain it's form even after the original method gets changed
+
+  def oldmtd
+    "old method"
+  end
+  alias newmtd oldmtd
+  def oldmtd
+    "changes"
+  end
+
+* splat arguments - multiple parameters
+  def foo(*my_string)  
+    my_string.inspect  
+  end  
+  puts foo('hello','world')  
+  puts foo()  
+
+***********
+* STRING  *
+***********
+a = <<END
+This is the string  
+And a second line  
+END
+
+puts a  
+
+***********
+* IRB HELP*
+***********
+http://www.caliban.org/ruby/rubyguide.shtml
+
+** HELP **
+ri Hash
+ri 'Array#<<'
+
+debug
+benchmark
+profile = kind of like benchmark?
+test
+
+Organize:
+  * invoke script with:
+    #!/usr/bin/ruby -w
+
+  * header block with:
+      author's name
+      perforce tag id
+      brief description of program
+
+  * require statements
+  * include statements
+  * class & module definitions
+  * main program section
+  * testing code
+
+  * exceptions
+      make sure script closes with something like this:
+
+      begin
+      file = open("/tmp/some_file", "w")
+        # do stuff here
+      ensure
+        file.close
+      end
+
+
+spacing
+  * default parameters
+    def foo(a, b=0, c="zip") <- notice no space between equal sign
+      ...
+    end
+  * initialisation
+    foo = {}
+    foo = Hash.new <- this is better because you can initialize with default parameters
+
+  * line length
+    80 characters max.  if you need to break line use:  \
+
+  * blank lines
+    2 blank lines between clas & module definitions
+    1 blank line between each method definition
+
+  * white space
+    foo = 1 
+      not: foo=1
+
+    def foo(bar, baz=0)
+      not: def foo(bar, baz = 0)
+
+    foo.bar( baz )
+      not: foo.bar(baz)
+
+naming
+  class
+    use nouns
+    camelcase:
+      class BigFatObject
+
+  modules
+    use adjectives:
+      Enumerable, Comparable
+
+  constants
+    use all caps & underscores:
+      BigFatObject::MAX_SIZE
+
+  methods
+    use verbs
+    lowercase & underscores:
+      BigFatObject#down_size
+    
+      
+    
+      
+    
 *************
 * SYSTEM    *
 *************
 acpi -t 
-  see how hot the computer is.  anything below 70 is ok
+see how hot the computer is.  anything below 70 is ok
 
 top
-  task manager
+task manager
 
-
-*************
-* SURROUND  *
-*************
-
-ds<character>			Delete surrounding <character>
-cs<character><new character>	Replace surrounding <character> with <new character>
-ys<text-obj><character>		Surround text-object with <character>
-dst				Delete surround tag (works on HTML tags)
-cst<h3>				Change surrounding tag to <h3>
-
-
-% = finds opposing brackets or matching key words
-  ex:  (),[], def - end, etc
 
 *************
 * RAILS VIM *
@@ -60,19 +222,6 @@ K	Upercase k. Note no need to specify shift key
 <F6>	Function key 6. (Similar for all fn keys)
 
 
-******************
-* VIM QUICK TIPS *
-******************
-
-<leader>i = auto indents whole screen
-
-
-* TABS
-
-2gt = navigate to 2nd tab
-
-:tabm 1 = moves current tab right after 1st tab
-
 ***********************
 * NAVIGATING IN RAILS *
 ***********************
@@ -94,92 +243,13 @@ Search & replace
   
   :%s/old/new/gc = find every occurence in the whole file with prompt
 
-*************
-* CONTROL P *
-*************
-
-* Press <c-f> and <c-b> to cycle between modes.
-* Press <c-d> to switch to filename only search instead of full path.
-* Press <c-r> to switch to regexp mode.
-* Use <c-j>, <c-k> or the arrow keys to navigate the result list.
-* Use <c-t> or <c-v>, <c-x> to open the selected entry in a new tab or in a new split.
-* Use <c-n>, <c-p> to select the next/previous string in the prompt's history.
-* Use <c-y> to create a new file and its parent directories.
-* Use <c-z> to mark/unmark multiple files and <c-o> to open them.
-
-
-********
-* EDIT *
-********
-
-di( = deletes everything within paranthesis
-
-**********
-* COMBOS *
-**********
-
-Add a command at the beginning of any of these:
-	w, aw	"inner word", "a word" (a word includes the space)
-	ip, ap	"inner paragraph", "a paragraph" ("a" includes the newline)
-	i), a)	"inner parenthesis", "a parenthesis" (includes the parens)
-	i', a'	"inner single quote", "a single quote" (includes the quotes)
-	i", a"	"inner double quote", "a double quote" (includes the quotes)
-	it, at	"inner tag", "a tag" (includes the open and closing tag)>
-
-	examples:
-	dw = delete to beginning of next word
-	daw = deletes the word no matter where the cursor is
-	ciw = delets just the word and puts you into insert
-	cip = deletes the paragraph and puts you into insert
-	dip = delete paragraph
-		in this situation:
-			i = inter (as in inside an object)
-			p = paragraph
-
-	/[word], ciw, n, . = find [word], delete a word and insert new word, go to next,  repeate with "."
-
->ip = indents whole paragraph>
-
-
 *******************
 *******************
 	TMUX
 
 *******************
 *******************
-
-# tips
-only one tmux client in terminal
-only one project per session.
-  details:  1st window - vim & tests
-            2nd window - background processes
-only run one vim instance per session
-
-C-a (          previous session
-C-a )          next session
-C-a L          ‘last’ (previously used) session
-C-a s          choose a session from a list
-Other:
-
 C-a $          rename the current session
-
-# connect to new session
-tmux switch-client -t [session name]
-
-# list sessions
-tmux ls
-
-# attach session
-tmux a
-tmux a -t [session-name]
-
-# detach session
-prefix d
-
-# key binding
-tmux bind-key [key] [command]
-  ex: tmuxh bind-key u split-window
-    use prefix before the keys
 
 # break a current pane into a new window
 prefix b
