@@ -1,0 +1,20 @@
+# start js server
+http-server
+
+# Workflow
+* Create a module, and use ng-app in the view to define the application
+  scope.
+* Create a controller, and use ng-controller in the view to define the
+  controller scope.
+* Add data to $scope in the controller so they can be displayed with
+  expressions in the view.
+
+# Deploy MongoDB & AngularJS to heroku
+* setup app config files (figure out later)
+* create add-on in heroku
+* push to heroku
+* ./Procfile
+  web: node server.js
+
+
+

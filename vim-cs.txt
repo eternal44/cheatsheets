@@ -41,19 +41,6 @@ x,y = y,x
 * BANGS     *
 *************
 
-a = "hello"
-a.upcase
-=> "HELLO"
-a
-=>"hello"
-a.upcase!    <-- where the magic happens
-=> "HELLO"
-a
-=> "HELLO"
-
-
-
-
 *************
 * ARRAY     *
 *************
@@ -76,22 +63,6 @@ class & modules are constants so they start with an upper case letter
     "changes"
   end
 
-* splat arguments - multiple parameters
-  def foo(*my_string)  
-    my_string.inspect  
-  end  
-  puts foo('hello','world')  
-  puts foo()  
-
-***********
-* STRING  *
-***********
-a = <<END
-This is the string  
-And a second line  
-END
-
-puts a  
 
 ***********
 * IRB HELP*
@@ -140,7 +111,7 @@ spacing
     end
   * initialisation
     foo = {}
-    foo = Hash.new <- this is better because you can initialize with default parameters
+    foo = Hash.new <- this is better because you can initialize with default values
 
   * line length
     80 characters max.  if you need to break line use:  \
@@ -150,7 +121,7 @@ spacing
     1 blank line between each method definition
 
   * white space
-    foo = 1 
+    foo = 1
       not: foo=1
 
     def foo(bar, baz=0)
@@ -211,17 +182,6 @@ gf			jumps to partial
 
 	<leader>t	Break the current window out to a new tab
 
-***************
-* KEY MAPPING *
-***************
-<leader>	Will be replaced with your leader key, e.g. \ or space
-<esc>	Treated as pressing the escape key
-<cr>	Treated as pressing the return key
-<C-k>	Control and k (k can be any character here)
-K	Upercase k. Note no need to specify shift key
-<F6>	Function key 6. (Similar for all fn keys)
-
-
 ***********************
 * NAVIGATING IN RAILS *
 ***********************
@@ -232,9 +192,6 @@ K	Upercase k. Note no need to specify shift key
 **********
 * SEARCH *
 **********
-
-CTRL-O = takes you back to older positions
-CTRL-I = takes you to new ones
 
 Search & replace
   :s/old/new/g = changes all "old" to "new" in that line
@@ -254,10 +211,10 @@ C-a $          rename the current session
 # break a current pane into a new window
 prefix b
 
-# move windows around
-C-a {          move the current pane to the previous position
-C-a }          move the current pane to the next position
-C-a C-o        rotate window ‘up’ (i.e. move all panes)
-C-a M-o        rotate window ‘down’
+# save session
+prefix ctrl-s
+
+# load session
+prefix ctrl-r
 
 

@@ -1,6 +1,46 @@
-****************
-* MAKE GEMS    *
-****************
+checkboxes
+http://www.sitepoint.com/save-multiple-checkbox-values-database-rails/
+
+glgga
+###################
+# PUNDIT & DEVISE #
+###################
+follow documentation for install
+rails g pundit:install
+Include this in application controller:
+  inlcude Pundit
+
+Options:
+Make sure each action is authorized
+  after_action :verify_authorized
+
+authorize under set_object for 
+
+w/ devise:
+  if after_action :verify_authorized, unless: :devise_controller?
+
+  in job_policy.rb.  example code:
+
+  def show?
+    user.present? && user == record.user
+  end
+
+  def job
+    record
+  end
+
+  in user.rb
+
+  def admin?
+    role == 'Admin'
+  end
+
+  can now add this to job_policy to test true or false on policies
+
+
+################
+# MAKE GEMS    #
+################
 gem build <filename>.gempsec
 
 gem install ./<filename>-0.0.0.gem
@@ -10,10 +50,19 @@ curl -u jyoun44 https://rubygems.org/api/v1/api_key.yaml >~/.gem/credentials; ch
 
 gem push <gemname>-0.0.0.gem
 
+IN DEVELOPMENT:
+Before releasing new gem developments:
 
-****************
-* Git commands *
-****************
+bump version:
+  ..../version.rb
+
+Release
+$ bundle exec rake release
+
+https://quickleft.com/blog/engineering-lunch-series-step-by-step-guide-to-building-your-first-ruby-gem/
+################
+# Git commands #
+################
 
 # Work flow models:
   Fork & Pull Model
@@ -25,89 +74,28 @@ gem push <gemname>-0.0.0.gem
     if everything works in production in can merge it with master
   Shared Repository Model
 
-
-
-# granular commit 
-git add . -N && git add -p
-
-git help
-https://help.github.com/articles/
-
-git co -b <branch name>
-
-git commit -a -m 'added new benchmarks'
-
-* Push existing repository from command line
-git remote add origin git@bitbucket.org:<username>/sample_app.git
-git remote add origin https://github.com/user/repo.git
-
-git push -u origin --all 
-
-git log --pretty=format:"%h - %an, %ar : %s"
-
-git log --pretty=format:"%h %s" --graph
-
-git reset [commit]
-enter commit number to undo all commits after it
-
-git reset --hard HEAD
-discard all changes and get clean working tree
-
 git clean -df
 removes all unstaged files & directories
 
-git lg -n 3
-get git log for last 3 commits
-
 git revert <commit>
 Generate a new commit that undoes all of the changes introduced in <commit>, then apply it to the current branch.
-
-git commit --amend
-Combine the staged changes with the previous commit and replace the previous commit with the resulting snapshot. Running this when there is nothing staged lets you edit the previous commit’s message without altering its snapshot.
 
 git revert --no-commit b28d438..HEAD
 git commit -m "Reverted back to b28d438"
 if you really mess up with commits do this to undo :)
 
-git checkout -b new-working-branch
-git add …
-git commit -m "mycommit" 
-How to move the changes into a new branch new-working-branch and then discard working-branch
+##############
+# DEF'N #
+##############
+
+################
+# Git / Heroku #
+################
 
 
-**************
-* DEF'N *
-**************
-class
-  ex:  float, string
+$ heroko run console --sandbox
 
-object
-  ex:
-    string object: "hello"
-
-method - things you can do with an object
-  ex:
-    object method: "1".to_i
-****************
-* Git / Heroku *
-****************
-
-heroku create
-
-git push heroku master
-
-heroku logs
-
-$ heroku run console --sandbox
-
-$ git push -u origin feature_branch_name`
-push and track a specific branch
-
-
-git push  
-git push heroku master
-git push heroku
-/* when you're on master */
+/# when you're on master #/
 heroku pg:reset DATABASE
 heroku run rake db:migrate
 heroku run rake db:seed
@@ -115,77 +103,33 @@ heroku run rake db:seed
 # if the css or styling doesn't match with the local host:
 bundle exec rake assets:precompile
 
+# set access keys
+heroku config:set [variable name]=[key] (remove brackets)
 
-******************************
-* Push commit to remote repo *
-******************************
-
-$ git commit -m "Add a Static Pages controller"
-$ git push -u origin static-pages
-The final command here arranges to push the static-pages topic branch up to Bitbucket. Subsequent pushes can omit the other arguments and write simply
-
-$ git push
+##############################
+# Push commit to remote repo #
+##############################
 
 
 
-***************************
-* Undo scaffold/ generate *
-***************************
+###########################
+# Multiple index item edits #
+###########################
+http://www.ksimmons.org/edit-multiple-records-using-a-bootstrap-modal-and-ruby-on-rails
 
-$ rails generate controller StaticPages home help
-$ rails destroy  controller StaticPages home help
-
-Similarly, in Chapter 6 we’ll generate a model as follows:
-$ rails generate model User name:string email:string
-
-This can be undone using:
-$ rails destroy model User
-
-rails g erb:scaffold Book
-This will return:
-
-create  app/views/books
-create  app/views/books/index.html.erb
-create  app/views/books/edit.html.erb
-create  app/views/books/show.html.erb
-create  app/views/books/new.html.erb
-create  app/views/books/_form.html.erb
-
-
-
-*******************
-* Undo migration  *
-*******************
+###################
+# Undo migration  #
+###################
 
 $ bundle exec rake db:migrate
 
 We can undo a single migration step using
-$ bundle exec rake db:rollback
-
-Roll back specific version
-rake db:migrate:down VERSION=20100905201547
-
-Migrate Status
-rake db:migrate:status
+$ bundle exec rake db:rollbac/
 
 
-
-
-**********************
-*	Android Studio	 *
-**********************
-
-cd android-studio/bin
-
-./studio.sh
-
-
-
-
-
-***********
-* Testing *
-***********
+###########
+# Testing #
+###########
 see for reference
   http://guides.rubyonrails.org/testing.html#unit-testing-your-models
   home/james/lab/practice/test_practice/
@@ -194,8 +138,6 @@ see for reference
     model
     routes
 
-write failing tests first.  then write pass tests.
-
 write controller and model tests first and integration tests (which test functionality across models, views, and controllers) second
 
 bundle exec rake test
@@ -203,15 +145,13 @@ bundle exec rake test
 when schema changes do this before running tests
 rake db:test:prepare
 
-5.3.4 - link testing
-
 debugger
 add to code where you want to search params, etc.
 
 
-********************************
-* Automated testing with Guard *
-********************************
+################################
+# Automated testing with Guard #
+################################
 known working gem combo:
 
 rails 4.2.0
@@ -291,60 +231,32 @@ add to .gitignore:
 $ bundle exec guard
 
 
-*********
-* Rails *
-*********
+#########
+# Rails #
+#########
 
-Configure pgres db
+# Configure pgres db
 rails new myapp --database=postgresql
 
+gem 'pg'
+
+rake db:setup
+rake db:migrate
+
 annotate gem - need to instanti
-*******
-* DB & models *
-*******
-
-$ bundle exec rake db:migrate
-
-$ bundle exec rake db:rollback
+#######
+# DB & models #
+#######
 
 $ rails console --sandbox
 #all changes wil be rolled back on exit
 
-$ bundle exec rake test:models
+$ bundle exec rake db:migrate:reset
+clears out all db data
 
-User.create
-combines User.new and User.save
-
-user.update_attributes(name: "xx", email: "xx")
-changes and saves attribute.
-use ...attribute(name:... for single changes
-
-
-
-    This:
-    class User < ActiveRecord::Base
-    validates :name, presence: true
-    end
-
-    is the same as this:
-    class User < ActiveRecord::Base
-    validates(:name, presence: true)
-    end
-
-    $ bundle exec rake db:migrate:reset
-    clears out all db data
-
-
-
-    ***************
-    * Definitions *
-***************
-
-Authentication - ID's users
-Authorization - allows actions
-
-
-Routes
+    ###############
+    # Definitions #
+###############
 
 _url vs _path
 use "_url" for redirect
@@ -354,9 +266,9 @@ use "_path" for hyperlinks
 this is like /
 
 
-**********
-* S3 AWS *
-**********
+##########
+# S3 AWS #
+##########
 
 1) Sign in to the AWS Management Console at http://aws.amazon.com/iam/
 
@@ -376,9 +288,9 @@ squat_admin
 Access Key ID:
 Secret Access Key:
 
-**************
-* POSTGRESQL *
-* ************
+##############
+# POSTGRESQL #
+# ############
 
 http://linuxrails.blogspot.com/2012/06/postgresql-setup-for-rails-development.html
 
@@ -394,7 +306,7 @@ hba_file path # for configuring connections
 sudo /etc/init.d/postgresql restart
 to restart db
 
-rake db:create:all 
+rake db:create:all
 creates new db's
 
 rake db:migrate
@@ -413,13 +325,13 @@ Connect to specific database
 
 Common MySQL commands with postgresql shortcut
 
-SHOW DATABASES  
+SHOW DATABASES
 \l
 
-SHOW TABLES 
+SHOW TABLES
 \d
 
-SHOW COLUMNS  
+SHOW COLUMNS
 \d table
 
 
@@ -434,13 +346,4 @@ sets db to your settings (in database.yml?)
   table names:
   lift_developement
   lift_test
-
-  *************
-  * BOOTSTRAP *
-  *************
-
-  https://github.com/IronSummitMedia/startbootstrap-one-page-wonder
-
-templates:
-http://startbootstrap.com/template-categories/all/
 
