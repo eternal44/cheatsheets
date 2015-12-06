@@ -1,16 +1,45 @@
+reschedule interviews for Dec. 17
 *************************
 *	Personal			*
 *************************
 
+CIVICMAKERS
+work on add story page
+extract input styling from addTool scss to styles/components/inputs.scss
+
+
+reread from a little before composability
+http://eloquentjavascript.net/05_higher_order.html
+
+to extract
+$ tar -zxvf prog-1-jan-2005.tar.gz -C /tmp
+
+to comopress
+$ tar -zcvf prog-1-jan-2005.tar.gz /tmp
+
+Read db creation in firebase
+  associations and cleaning up
+    changing column names?
+
+Skeleton for EAN backend
+https://www.airpair.com/javascript/complete-expressjs-nodejs-mongodb-crud-skeleton
+
 Living trust - check if I have to pay taxes
-Ask Simmon if I'm good to live here till end of dec
+FU - 11/19 - Ask Simmon if I'm good to live here till end of dec
 Add dotfiles & notes to github
+figure out how (req, res, next) pattern works
+figure out how naming convention for folders can work
+  ex:  public/todos/views/edit-todos.client.view.html
+After angular portion of tutorial:
+  Play with chrome web developer
+  Add 'MEN' to flatlanders gem I built
 for test:  EMAILS - not EMAIL
 
 sublime
 ctrl kb
 
 shift alt 2
+mkdir -p public/todos/{controllers,views,services,config}
 
 
 Use gmail to send emails (because it's cheap) and
@@ -21,6 +50,7 @@ figure out how to respond with the right email for each request
 # find client -type f -name '*.html'
 copy all files in subdirectory
 # cp -a /mnt/dvd/data/* /home/tom/data
+# touch {'index.html','app.js}
 
 readup on Auth and build a simple login & mailer for practice
 

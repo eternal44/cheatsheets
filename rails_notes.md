@@ -1,18 +1,14 @@
+*************
+* ruby code *
+*************
 
 ******************
 * PHILOSOPHY     *
 ******************
 "It is confusing to me to even think about methods returning objects unless you are using that as a very specific shorthand for saying that methods return *references* to objects. That is the unifying idea that helped me understand how Ruby manipulates data -- it is all references and not the objects themselves. The objects themselves are almost completely hidden from the programmer (excluding C extensions) in Ruby. Everything is a reference to an object."
 
-******************
-* LINK DOT FILES *
-******************
 
-Ex: ln -s ~/code/dotfiles/vimrc ~/.vimrc
 
-*************
-* ruby code *
-*************
 @variable ||= "default value"
   same thing as:
     @variable = @variable || "default value"
@@ -20,7 +16,7 @@ Ex: ln -s ~/code/dotfiles/vimrc ~/.vimrc
   sets a value only if it hasn't already been set
 
 
-if a = f(x) and b = f(y) and c = f(z) then d = g(a,b,c) end  
+if a = f(x) and b = f(y) and c = f(z) then d = g(a,b,c) end
   * values will keep getting set until it reaches a false value
   * this wouldn't be possible if I used '&&' instead of 'and'
 
@@ -147,74 +143,6 @@ naming
   methods
     use verbs
     lowercase & underscores:
-      BigFatObject#down_size
-    
-      
-    
-      
-    
-*************
-* SYSTEM    *
-*************
-acpi -t 
-see how hot the computer is.  anything below 70 is ok
-
-top
-task manager
-
-
-*************
-* RAILS VIM *
-*************
-
-:A			Open the "alternate" file of the current (spec for model, etc)
-:AV			Open the "alternate" file in a vertical split
-:RModel <tab>		Tab complete to open models by name
-:RController <tab>	Tab complete to open models by name
-:Rextract (visual)	Extract visual selection to a partial, replace with render
-:E[file type]		If you're in the user model and want to edit it's related file type.  EX: unittest
-gf			jumps to partial
-
-
-*************
-* FILE NAV  *
-*************
-
-	<leader>t	Break the current window out to a new tab
-
-***********************
-* NAVIGATING IN RAILS *
-***********************
-
-]m, [m = jump to top or def
-[M = jump to end of next definition
-
-**********
-* SEARCH *
-**********
-
-Search & replace
-  :s/old/new/g = changes all "old" to "new" in that line
-  
-  :#,#s/old/new/g = "#,#' defines line ranges to find and replace text
-  
-  :%s/old/new/gc = find every occurence in the whole file with prompt
-
-*******************
-*******************
-	TMUX
-
-*******************
-*******************
-C-a $          rename the current session
-
-# break a current pane into a new window
-prefix b
-
-# save session
-prefix ctrl-s
-
-# load session
-prefix ctrl-r
+      BIGFATOBJECT#DOWN_SIZE
 
 

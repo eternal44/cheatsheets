@@ -1,13 +1,54 @@
-TODO:  figure out what the diff is for:
-- exports
-- module.exports
-play with the simple example we made just now
+READ:
+read about Express function(req, res, next)
+Sequelize - ORM
+Bluebird
+Promise
+searcing files in command line
+step debugging for node & angular
+
+ng-bind has one-way data binding ($scope --> view). It has a shortcut {{
+val }} which displays the scope value $scope.val inserted into html
+where val is a variable name.
+
+ng-model is intended to be put inside of form elements and has two-way
+data binding ($scope --> view and view --> $scope) e.g. <input
+ng-model="val"/>.
+
+Jobcouch: API folder
+
+###########
+# FILE IO #
+###########
+
+# module.exports vs exports
+  default to 'module.exports'. It can export functions and values more
+  dynamically than 'exports'.  'exports' will not export everything like
+  'module.exports' will.
+
+  still not sure what the big difference is though.
+
+
+# require
+This is for requiring files.  Note the extra './'
+```js
+var config = require('./config')
+```
+
+Do './[file name/' to require whole folders
+
+This is for requiring modules (like 'fs', 'mongoose', etc.).
+```js
+var mongoose = require('mongoose')
+```
+
 
 # NEW NOTES #
 ############
 # MONGO DB #
 ############
 Document oriented DB vs Relational DB
+
+Can use a schema to give document objects structure
 
 ###########
 # EXPRESS #
@@ -21,7 +62,7 @@ Document oriented DB vs Relational DB
 
 
 Connect module - delivers a set of wrappers around the NodeJS low-level
-APIs to enable the development of rich web application frameworks.  
+APIs to enable the development of rich web application frameworks.
   KEY:  Connect middleware is basically a bunch of callback functiosn
         which get executed when a HTTP request occurs.Th middleware can then
         perform some logic, return a response, or call the next registered
@@ -161,6 +202,9 @@ $ show collections
 insert
 $ db.todos.insert({"title": "Write a blog post", "user": "james"})
 
+insert-alternative
+# $ curl -X POST -H "Content-Type: application/json" -d '{"name": "Kevin", "email": "kevin@mitnick.com", "username": "Condor", "password": "AintNoBodyGotTimeForGoodPa$words!!!"}' localhost:1337/users
+
 update. note:  use the 'upsert' flag to create document if it doesn't exist
 $ db.todos.update({
         "user": "nikola"
@@ -212,6 +256,10 @@ $ db.todos.update({
   }
 )
 
+update-alternative:
+# $ curl -X PUT -H "Content-Type: application/json" -d '{"name": "UpdatedName"}' localhost:1337/users/[_id]
+
+
 # DELETE
 remove all documents from todo
 $ db.todos.remove()
@@ -219,6 +267,19 @@ $ db.todos.remove()
 remove only the first document from todos collection made by Nikola
 $ db.todos.remove({ "user": "nikola"}, true)
   NOTE:  to remove all by Nikola just remove 'true'
+
+remove alternative:
+# $ curl -X DELETE localhost:1337/users/564a742bc8e928746cd7db70
+
+
+
+# CONNECT TO MONBODB
+$npm install mongoose --save
+# if in production
+mongodb://username:password@hostname:port/database
+
+# if local
+mongodb://localhost/todos
 
 #######
 # NPM #
@@ -354,15 +415,29 @@ db.users.remove()
 ###########
 
 # Angular services
-- Service: The simplest type. Services are instantiated with the new keyword. You have the ability to add properties to a service and call those properties from within your controllers.
-- Factory: The most popular type. In a Factory, you create an object, add properties to that object, and then return it. Your properties and functions will be available in your controllers.
-- Provider: Providers are the most complex of the services. They are the only service that can be passed into the config() function to declare application-wide settings
+Used to save persistent data.  Note:  controllers SHOULD NOT store
+persistent data - they are only a mechanism to connect the other parts
+of our app.  Any time we switch routes or reload the page Angular cleans
+up the current controller.  Services however provide a means for keeping
+data around for the lifetime of an app and can be used across different
+controllers in a consistent manner.
+[source](http://tylermcginnis.com/angularjs-factory-vs-service-vs-provider/)
 
+Good Summary:
+1) When you’re using a Factory you create an object, add properties to
+it, then return that same object. When you pass this service into your
+controller, those properties on the object will now be available in that
+controller through your factory.
 
-Service - responsible for grabbing data from an API
-Controller - responsible for facilitating data for view
-databindig - whatever is binded in model is bound in views
-  and vice versa
+2) When you’re using Service, it’s instantiated with the ‘new’ keyword.
+Because of that, you’ll add properties to ‘this’ and the service will
+return ‘this’. When you pass the service into your controller, those
+properties on ‘this’ will now be available on that controller through
+your service.
+
+3) Providers are the only service you can pass into your .config()
+function. Use a provider when you want to provide module-wide
+configuration for your service object before making it available.
 
 dependency injection - like packaged bits of code?
 
