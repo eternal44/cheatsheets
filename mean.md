@@ -1,3 +1,12 @@
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+eyJuYW1lIjoiSmFtZXMiLCJ1c2VybmFtZSI6IlNvbWV0aGluZyByZWFsIiwiaWF0IjoxNDQ5ODc5MTg2LCJleHAiOjE0NDk5NjU1ODZ9
+YXp5hz0jxgbclG7L_J4IFNPmELtkqa9ndLR3aMVms5g
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+eyJuYW1lIjoiQ2hyaXMiLCJ1c2VybmFtZSI6ImNocmlzIiwiaWF0IjoxNDQ5ODgwMzY2LCJleHAiOjE0NDk5NjY3NjZ9
+nXAyDTvmXDIGOI3iZAL6VGzqc1bR8oTaZEmxkbCNPYo"
+
+
 READ:
 read about Express function(req, res, next)
 Sequelize - ORM
@@ -14,7 +23,17 @@ ng-model is intended to be put inside of form elements and has two-way
 data binding ($scope --> view and view --> $scope) e.g. <input
 ng-model="val"/>.
 
-Jobcouch: API folder
+
+###########
+# ROUTING #
+###########
+
+Use 'Express' & 'Angular' to handle routing from servier & client sides
+
+Express - serves up static pages and UI-view partials (index.html), images, js / css, and exposes
+REST api's
+
+Angular - interacts with that api to get data from Mongo
 
 ###########
 # FILE IO #
@@ -55,10 +74,14 @@ Can use a schema to give document objects structure
 ###########
 # rendering views
 1. app.render() - render the view and then pass the HTML to a callback
-   function.  Us this to output the HTML.
+   function.  Use this to output the HTML.
 
 2. res.render() - render the view locally & send the HTML as a response.
    This is normally used and is for rendering the HTML
+
+# res vs req
+res - 'response': return something to client? STDOUT?
+req - 'request': request something from client? STDIN?
 
 
 Connect module - delivers a set of wrappers around the NodeJS low-level
@@ -198,9 +221,14 @@ $ show dbs
 show collection.  collection is like a SQL table
 $ show collections
 
+show current db
+$ db
+
 # WRITE
 insert
 $ db.todos.insert({"title": "Write a blog post", "user": "james"})
+$ db.users.save([{ name: 'Chris' }, { name: 'Holly' }]);
+$ db.users.save({ name: 'Holly' });
 
 insert-alternative
 # $ curl -X POST -H "Content-Type: application/json" -d '{"name": "Kevin", "email": "kevin@mitnick.com", "username": "Condor", "password": "AintNoBodyGotTimeForGoodPa$words!!!"}' localhost:1337/users
@@ -482,3 +510,181 @@ Instead of:
 
 
 
+#######################
+# SCOTCH MEAN MACHINE #
+#######################
+use nodemon to start server
+
+
+
+
+
+#############
+# DEV TOOLS #
+#############
+console
+ctrl + j
+
+general dev tool
+ctrl + i
+
+inspect element
+ctrl + c
+
+# in console
+$ document
+all html elements stored as properties of document?
+
+# html element lookup
+$ document.querySelector('#title')
+    or
+$ $('#title')
+
+finds that DOM in our 'element' panel
+$ inspect($('#title')[0])
+
+and in reverse, if you want to play with a DOM from the 'element' panel
+- click on it in the 'element' panel and in console:
+$ $0
+
+remove that item
+$ $0.remove
+
+# source panel
+press `esc` to toggle console when you want to manipulate in debugger mode
+
+
+##########
+# JQUERY #
+##########
+
+# selectors
+select element
+$("[element]")
+
+select element attribute
+$("[element]").text();
+
+change element attribute
+$("[element]").text("type changes here");
+
+selecting specific selectors
+$(".container");
+
+select direct decendants.  It won't select it's children's childrens
+$("#destinations > li");
+
+select multiple items
+$(".promo, #france");
+
+select first item
+$("#destinations li:first");
+
+select every other item
+$("#destinations li:odd");
+
+
+# traversing (faster than selectors)
+
+$("#destinations").find("li");
+$("#destinations").find("li").first();
+$("#destinations").find("li").first().next();
+$("#destinations").find("li").first().next().prev();
+
+get parent DOM
+$("#destinations").find("li").first().parent();
+
+
+get children DOM
+$("#destinations").children("li");
+
+# appending to the DOM
+
+var price = $('<p>From $399.99</p>');  < create a node
+$('.vacation').append(price); < attach above node to DOM
+
+attach above node to DOM
+.append(<element>) < adds as first element in DOM
+.after(<element>) < adds after the element
+.prepend(<element>) < adds as last element in DOM
+.before(<element>) < adds before the element
+
+remove node
+$('button').remove();
+
+
+like attach methods above but reverse order
+.appendTo(<element>);
+.prependTo(<element>);
+.insertAfter(<element>);
+.insertBefore(<element>);
+
+$price.appendTo($('.vacation'));
+
+
+
+# event handler
+
+$('button').on('click', function(){
+  var price = $('<p>From $399.99<p>');
+  $('.vacation').append(price);
+  $('button').remove();
+});
+
+
+
+# this
+if there are a lot of '.vacation'
+
+$('button').on('click', function(){
+  var price = $('<p>From $399.99<p>');
+  < this refers to the specific '.vacation.' element we're in.
+  < 'closest' will find the closest parent element
+  $(this).closest.('.vacation').append(price);
+  $(this).remove();
+});
+
+parent() vs closest()
+parent will find ALL ancestor classes
+closest will find ONE or NO ancestor classes
+
+
+
+# data-[data name]
+ex: `<li class="vacation onsale" data-price='399.99'>`
+
+$('button').on('click', function(){
+  var price = $('<p>From $399.99<p>'); < add the 2 lines below here
+  $(this).closest.('.vacation').append(price);
+  $(this).remove();
+});
+
+var amount = $(this).closest('.vacation').data('price');
+var price = $('<p>From $' + amount + '</p>');
+
+$('button').on('click', function(){
+  var vacation = $(this).closest('.vacation');
+  var amount = vacation.data('price');
+  var price = $('<p>From $' + amount + '</p>');
+
+  vacation.append(price);
+  $(this).remove();
+});
+
+
+# event delegation
+the click event will trigger on any 'button' on our page.
+the code below will only trigger on 'vacation button'.
+
+$('.vacation').on('click', 'button', function() {});
+
+# filter
+ex: `<li class="vacation onsale" data-price='399.99'>`
+
+Finds elements with a class of vacation & onsale and add a class
+$('.vacation').filter('.onsale').addClass('highlighted');
+
+$('#filters').on('click', '.onsale-filter', function(){
+  $('.highlighted').removeClass('highlighted');
+  $('.vacation').filter('.onsale').addClass('highlighted');
+});

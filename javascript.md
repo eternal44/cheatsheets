@@ -24,8 +24,19 @@ console.log(bowlingScore([0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 10, 1,0]) );
 // console.log( 12 == bowlingScore([0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 10, 1,0]) );
 
 
+# undefined Vs null
+undefined - for variables, properties, and methods
+null - for objects
+  but to be null, remember an object has to atleast be defined first
 
+# this keyword
 
+depends on how a function is called.
+
+- Global setting (if in a browser it'll be 'window' or 'document'
+- within a function (if just a simple function it'll be global
+- object function (it'll be the object)
+  ex:  o.f() <- 'this' in this case is 'o';
 
 # Higher-order functions
 
