@@ -1,3 +1,6 @@
+tmux
+ctrl-a + w
+shows current windows
 ```
 # LINK DOT FILES
 
@@ -9,7 +12,9 @@ sass --watch input.scss:output.css
 ############
 # TERMINAL #
 ############
-
+$ more
+$ less
+like cat but you can scroll thru (like 'git lg')
 
 to extract
 $ tar -zxvf prog-1-jan-2005.tar.gz -C /tmp
@@ -17,13 +22,8 @@ $ tar -zxvf prog-1-jan-2005.tar.gz -C /tmp
 to comopress
 $ tar -zcvf prog-1-jan-2005.tar.gz /tmp
 
-
 acpi -t
 see how hot the computer is.  anything below 70 is ok
-
-$ reboot
-$ poweroff
-
 
 # NAVIGATING
 
@@ -56,11 +56,6 @@ $ mv -t DESTINATION file1 file2 file3
 
 ###  say 'directory' instead of 'folder'
 
-# dots
-'.' - represents current working directory
-'..' - represents directory below current directory
-
-
 # GREP #
 v - Print all lines that do not match pattern.
 n - Print the matched line and its line number.
@@ -84,8 +79,6 @@ copy all files in subdirectory
 $ cp -a /mnt/dvd/data/* /home/tom/data
 $ touch {'index.html','app.js}
 
-
-
 # tree #
 exclude directory
 tree -I 'node_modules'
@@ -97,25 +90,25 @@ tree -I 'node_modules'
 
 # NERD TREE
 
-t: Open the selected file in a new tab
 i: Open the selected file in a horizontal split window
-s: Open the selected file in a vertical split window
 I: Toggle hidden files
 m: Show the NERD Tree menu
 R: Refresh the tree, useful if files change outside of Vim
 ?: Toggle NERD Tree's quick help
 
-
-Search & replace
-  :s/old/new/g = changes all "old" to "new" in that line
-
-  :#,#s/old/new/g = "#,#' defines line ranges to find and replace text
-
-  :%s/old/new/gc = find every occurence in the whole file with prompt
+  Ctrl-y Moves screen up one line
+  Ctrl-e Moves screen down one line
+  Ctrl-u Moves screen up ½ page
+  Ctrl-d Moves screen down ½ page
+  Ctrl-b Moves screen up one page
+  Ctrl-f Moves screen down one page
 
 #######
 # GIT #
 #######
+$ git merge --abort
+to abort merge
+
 $ git type [sha]
 shows type of sha
 
@@ -158,9 +151,19 @@ shows all local & remote branches
 $ git branch --track greet origin/greet
 track remote branch called greet in local repo
 
+$ git branch -f master HEAD~3
+Move master branch back 3 commits
+
+$ git branch -f master [name of commit]
+Move master branch to point to a different commit!
+
+$ git cherry-pick <Commit1> <Commit2> <...>
+Cherry pick the commits you want
+
 # merging
 when upstream repo has changes and you're in your local repo :
 $ git fetch   > upstream's history will show in your local git history as 'upstream/master'
 x - can i checkout upstream sha's? 
 $ git merge upstream/master    > merges upstream's changes
+
 

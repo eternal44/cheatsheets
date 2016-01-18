@@ -1,20 +1,3 @@
-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
-eyJuYW1lIjoiSmFtZXMiLCJ1c2VybmFtZSI6IlNvbWV0aGluZyByZWFsIiwiaWF0IjoxNDQ5ODc5MTg2LCJleHAiOjE0NDk5NjU1ODZ9
-YXp5hz0jxgbclG7L_J4IFNPmELtkqa9ndLR3aMVms5g
-
-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
-eyJuYW1lIjoiQ2hyaXMiLCJ1c2VybmFtZSI6ImNocmlzIiwiaWF0IjoxNDQ5ODgwMzY2LCJleHAiOjE0NDk5NjY3NjZ9
-nXAyDTvmXDIGOI3iZAL6VGzqc1bR8oTaZEmxkbCNPYo"
-
-
-READ:
-read about Express function(req, res, next)
-Sequelize - ORM
-Bluebird
-Promise
-searcing files in command line
-step debugging for node & angular
-
 ng-bind has one-way data binding ($scope --> view). It has a shortcut {{
 val }} which displays the scope value $scope.val inserted into html
 where val is a variable name.
@@ -344,29 +327,6 @@ $ npm install express --save
 
 
 
-#############
-# OLD NOTES #
-#############
-
-##############
-# JAVASCRIPT #
-##############
-# always use semicolon after each statement
-Statement - think of "if" or "loop" statements
-Expression - x = 3
-
-# precedence from lowest to highest
-    ||
-    &&
-    comparison operators (>, ==, etc.)
-    all others
-
-# debug
-# in JS file type:
-  console.debug(data)
-
-# go to webdev page and click on console.  All values for 'data' will be dumped here
-
 ############
 # BACK END #
 ############
@@ -682,9 +642,149 @@ $('.vacation').on('click', 'button', function() {});
 ex: `<li class="vacation onsale" data-price='399.99'>`
 
 Finds elements with a class of vacation & onsale and add a class
-$('.vacation').filter('.onsale').addClass('highlighted');
+$('.vacation').filter('.onsale').addClaslic('highlighted');
 
 $('#filters').on('click', '.onsale-filter', function(){
   $('.highlighted').removeClass('highlighted');
   $('.vacation').filter('.onsale').addClass('highlighted');
 });
+
+
+#########
+# REGEX #
+#########
+
+# []
+matches a single letter
+ex:  [cmf]an
+
+Match can
+Match man
+Match fan
+Skip dan
+Skip ran
+Skip pan
+
+# [^]
+does the opposite of above
+
+# [A-Z]
+matches all words that have a capital first letter
+
+# [z]{3}
+matches any word with 3 'z's in a row
+
+# a+
+matches any word with more than 1 'a'j
+
+# a{2,4}b*c
+# [a]{2}
+Match aaaabcc
+Match aabbbbc
+Match aacc
+Skip  a
+
+# find every instance of a class in string
+```
+var regexp = /class="(.*?)"/g;
+htmlStrings[6].match(regexp)
+```
+
+# regexp for .match() on class name in element
+```
+var regexp =/class="(.*?)"/g;
+```
+
+
+# RECURSION
+```
+// Here is the array we will store results in
+var multiples = [];
+
+function multiplesOf(base, i) {
+  // Base case
+  if (i === 0) {
+  // Write the  array multiples to the console
+  console.log(multiples)
+  }
+  // Recursive case
+  else {
+    multiples[i - 1] = base * i;
+  // Add a recursive functionunction call
+  multiplesOf(base, i -1);
+  }
+}
+
+multiplesOf(3, 4);
+
+```
+
+# VALUES VS REFERENCES
+var a = 7;
+var b = 7;
+a === b
+
+var a = [1,2];
+var b = [1,2];
+a !== b
+
+var a = [1,2];
+b = a;
+b === a; // note:  b points to the reference ID, not to 'a'
+a[0] = 42;
+console.log(b); // [42,2];
+
+
+- LHS VS RHS
+var a = 3; // a gets wiped and reassigned
+
+var notFav = myFavNumber + 3;
+
+example:
+var val = 7;
+
+var f = function(n) {
+  n += 1;
+};
+
+f(val);
+
+console.log(val); // 7
+because `f(val)` gets passed in the VALUE of 'val', not it's reference
+
+var arr = [1,2];
+
+var f = function(a){
+  a[0] = 'hi';
+  // a = 'hi'; <- this won't change the arr above... whY???
+  //           <- because 'a' used to point to the array but
+                  by itself it's just a variable pointer
+};
+
+console.log(arr); // ['hi', 2];
+
+```
+RULES:
+- when we assign a primitive value to a variable it holds it's value
+- but when we assign an object value to a variable it holds it's
+  memory address
+- remember exception:  null acts as a primitive and can be considered such
+- when we pass a primitive parameter to a function it passes a copy of
+  the value to it.
+- when we pass an object parameter to a function it passes a reference
+  of the object to it.
+```
+
+
+#########
+# MYSQL #
+#########
+# mysql CLI
+$ mysql -u root -p
+mysql> show databases;
+mysql> use [table name];
+mysql> show tables;
+
+mysql-workbench
+
+
