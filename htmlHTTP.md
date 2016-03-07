@@ -59,3 +59,10 @@ POST    /blog-posts     - Create a new blog post
 GET     /blog-posts/1   - Get the blog post with id=1
 PUT     /blog-posts/1   - Update blog post with id=1
 DELETE  /blog-posts/1   - Delete blog post with id=1
+
+
+                                the response from timeserver.com will be processed to this callback from our own app
+                                                          |
+<script src = "http://www.timeserver.com/time?callback='displayTime'"></script>
+                                          |
+                            timeserver.com gives back a time

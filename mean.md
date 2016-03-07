@@ -402,6 +402,16 @@ db.users.remove()
 # Angular #
 ###########
 
+# Factory
+
+when would you want to persist data in the factory instead of the db?
+  ex: form value.  you can navigate away and come back later to review
+
+# Digest Cycle
+
+
+
+
 # Angular services
 Used to save persistent data.  Note:  controllers SHOULD NOT store
 persistent data - they are only a mechanism to connect the other parts
@@ -788,3 +798,55 @@ mysql> show tables;
 mysql-workbench
 
 
+#######################
+# DEPLOYMENT PITFALLS #
+#######################
+
+# hard coded assumptions
+  problem: port numbers - host may have your server listen on another port
+  solution: app.isten(process.env.PORT);
+
+  problem: in app: 'localhost:3000/posts'
+  solution: use relative paths '/posts'
+
+  problem: dependencies you use aren't in your packages
+  solution: use '--save';
+
+  problem: pathing
+  solution:
+    ```bash
+    echo PATH.///// lookup later
+    ```
+
+# failure to design a debuggable app
+  ex:  if app breaks:  how do you track that bug down
+
+  problem: no error handling.  Server will die & you won't know where
+  the error occured?
+    ```js
+    function(err, user) {
+      // if(err) console.error('this broke'); // no error handling
+      res.end(user.name);
+    }
+    ```
+
+    problem: db connection errors ignored
+
+    ```js
+      db.connect();
+    ```
+
+    ```js
+      res.end('error aunthenticating'); // no logging
+    ```
+# lack of deployment automation
+  take out the guess work to prop up an app.
+    - install bower / npm components
+    - run grunt task
+    - touch a log file
+
+  publish from source control (github to heroku);
+    - Procfile
+
+# inability to scale by (unconcious design)
+  ex: don't worry too much about scaling until you get users

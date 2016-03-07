@@ -1,3 +1,83 @@
+###############
+# Random bits #
+###############
+
+# Evaluating RHS
+> an assignment can be an expression that represents a value
+var i = 7;
+i = i + 1;
+
+> Same as i = i + 1;
+i += 1;
+
+> Evaluates 'i' and then increments by '1' ('evaluates' === 'return'?);
+i++;
+
+> increments by '1' and evaluates 'i' ('evaluates' === 'return'?);
+++i
+(i + 1);
+
+# loop semantics
+for (var i = 0; i< arr.length; i++){
+  if(arr[i].type !== english){
+    continue; // goes to next loop - for readability
+  }
+  // do something
+}
+
+
+for (var i = 0; i< arr.length; i++){
+  if(arr[i].type !== english){
+    break; // stops loop but doesn't return from the function this loop might be in
+  }
+  // do something
+}
+
+
+
+
+#################
+# 4 cores to JS #
+#################
+Async code execution - read kyle simpson's book
+
+
+########
+# NODE #
+########
+module.exports = obj
+
+exports.func = func;
+
+
+#######
+# ES6 #
+#######
+
+npm install -g bable ?
+babel src --watch --out-dir es6
+
+# activate on chrome
+chrome://flags/#enable-javascript-harmony
+
+####################
+# EVENTING SYSTEMS #
+####################
+// learn this.  GOod for understanding and may come up on interviews
+
+var addEventSystem = function(target) {
+  target.reactionsTo = {};
+  target.on = function(e, cb){
+    this.reactionsTo[e] = this.reactionsTo[e] || [];
+    this.reactionsTo[e].push(cb);
+  };
+  target.trigger = function(e){
+    _.each(this.reactionsTo[e], function(cb){
+      cb();
+    });
+  };
+};
+
 ##############
 # CALL STACK #
 ##############

@@ -1,3 +1,7 @@
+# change es5 to es6
+xto6 es5.js -o es6.js
+
+
 tmux
 ctrl-a + w
 shows current windows
@@ -73,7 +77,7 @@ pipe searches with filters (exclude searches by keywords)
 $ grep -irn "[search word]" [directory] | grep -v "[exluded words]"
 
 exclude files from grep
-$ grep -inR --exclude="\bootstrap.min.css" panel* .
+grep -R --exclude-dir=node_modules [ some pattern ] /path/to/search
 
 copy all files in subdirectory
 $ cp -a /mnt/dvd/data/* /home/tom/data
@@ -165,5 +169,10 @@ when upstream repo has changes and you're in your local repo :
 $ git fetch   > upstream's history will show in your local git history as 'upstream/master'
 x - can i checkout upstream sha's? 
 $ git merge upstream/master    > merges upstream's changes
+
+
+# pull request
+Checkout a pull request.  BRANCHNAME is the new branch you want to create
+git fetch origin pull/ID/head:BRANCHNAME
 
 
